@@ -44,7 +44,7 @@
 	switch(A.stage)
 		if(2)
 			if(prob(base_message_chance))
-				to_chat(M, "<span class='notice'>Your skin feels scaly</span>")
+				to_chat(M, "<span class='notice'>Your skin feels scaly.</span>")
 		if(3, 4)
 			if(prob(base_message_chance))
 				to_chat(M, "<span class='notice'>[pick("Your skin is hard.", "You feel stronger.", "You feel powerful.")]</span>")
@@ -77,7 +77,7 @@
 			LAZYCLEARLIST(cached_tentacle_turfs)
 			last_location = loc
 			tentacle_recheck_cooldown = world.time + initial(tentacle_recheck_cooldown)
-			for(var/turf/open/T in orange(2, loc))
+			for(var/turf/open/T in (RANGE_TURFS(2, loc)-loc))
 				LAZYADD(cached_tentacle_turfs, T)
 		for(var/t in cached_tentacle_turfs)
 			if(isopenturf(t))

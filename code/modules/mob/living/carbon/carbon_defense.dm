@@ -53,11 +53,6 @@
 		return wear_mask
 	if(check_glasses && glasses && (glasses.flags_cover & GLASSESCOVERSEYES))
 		return glasses
-/mob/living/carbon/is_pepper_proof(check_head = TRUE, check_mask = TRUE)
-	if(check_head &&(head?.flags_cover & PEPPERPROOF))
-		return head
-	if(check_mask &&(wear_mask?.flags_cover & PEPPERPROOF))
-		return wear_mask
 
 /mob/living/carbon/check_projectile_dismemberment(obj/item/projectile/P, def_zone)
 	var/obj/item/bodypart/affecting = get_bodypart(def_zone)
@@ -186,16 +181,19 @@
 /mob/living/carbon/attack_slime(mob/living/simple_animal/slime/M)
 	if(..()) //successful slime attack
 		if(M.powerlevel > 0)
-			M.powerlevel --
+			M.powerlevel--
 			visible_message("<span class='danger'>The [M.name] has shocked [src]!</span>", \
 				"<span class='userdanger'>The [M.name] has shocked you!</span>")
 			do_sparks(5, TRUE, src)
 			Knockdown(M.powerlevel*5)
 			if(stuttering < M.powerlevel)
 				stuttering = M.powerlevel
+			if(M.transformeffects & SLIME_EFFECT_ORANGE)
+				adjust_fire_stacks(2)
+				IgniteMob()
 			adjustFireLoss(M.powerlevel * 3)
 			updatehealth()
-		return 1
+		return TRUE
 
 /mob/living/carbon/proc/dismembering_strike(mob/living/attacker, dam_zone)
 	if(!attacker.limb_destroyer)
@@ -388,7 +386,8 @@
 	var/effect_amount = intensity - ear_safety
 	if(effect_amount > 0)
 		if(stun_pwr)
-			Paralyze(stun_pwr*effect_amount)
+			Paralyze((stun_pwr*effect_amount)*0.1)
+			Knockdown(stun_pwr*effect_amount)
 
 		if(istype(ears) && (deafen_pwr || damage_pwr))
 			var/ear_damage = damage_pwr * effect_amount

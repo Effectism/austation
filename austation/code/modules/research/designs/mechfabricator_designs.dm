@@ -1,27 +1,9 @@
-/datum/design/borg_transform_security
-	name = "Cyborg Upgrade (Security Module)"
-	id = "borg_transform_security"
-	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/transform/security
-	materials = list(/datum/material/iron = 15000, /datum/material/glass = 15000, /datum/material/diamond = 1500, /datum/material/gold = 2000, /datum/material/uranium = 1000)
-	construction_time = 120
-	category = list("Cyborg Upgrade Modules")
-
 /datum/design/borg/kitchen
 	name = "Cyborg Upgrade (Service)"
 	id = "borg_upgrade_cooking"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/kitchen
 	materials = list(/datum/material/iron = 10000, /datum/material/glass = 4000)
-	construction_time = 100
-	category = list("Cyborg Upgrade Modules")
-
-/datum/design/borg/cutter
-	name = "Cyborg Upgrade (Plasma Cutter)"
-	id = "borg_upgrade_cutter"
-	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/cutter
-	materials = list(/datum/material/iron = 4500, /datum/material/glass = 500, /datum/material/plasma = 400) //same as normal cutter but with more iron
 	construction_time = 100
 	category = list("Cyborg Upgrade Modules")
 
@@ -97,3 +79,14 @@
 	materials = list(/datum/material/iron=15000,/datum/material/gold=10000,/datum/material/silver=10000,/datum/material/titanium=10000)
 	construction_time = 600
 	category = list("Gygax")
+
+
+/datum/design/drone_shell
+	name = "Drone Shell"
+	desc = "A shell of a maintenance drone, an expendable robot built to perform station repairs.."
+	id = "drone_shell"
+	build_type = MECHFAB
+	build_path = /obj/item/drone_shell
+	materials = list(/datum/material/iron=2000,/datum/material/gold=200,/datum/material/glass=1500)
+	construction_time = 100
+	category = list("Misc")
