@@ -112,20 +112,16 @@
 	return .
 
 /datum/dna/proc/generate_dna_blocks()
-	var/bonus
+	var/list/mutations_temp = GLOB.good_mutations + GLOB.bad_mutations + GLOB.not_good_mutations
 	if(species?.inert_mutation)
-		bonus = GET_INITIALIZED_MUTATION(species.inert_mutation)
-	var/list/mutations_temp = GLOB.good_mutations + GLOB.bad_mutations + GLOB.not_good_mutations + bonus
+		mutations_temp += GET_INITIALIZED_MUTATION(species.inert_mutation)
 	if(!LAZYLEN(mutations_temp))
 		return
 	mutation_index.Cut()
 	shuffle_inplace(mutations_temp)
 	if(ismonkey(holder))
-		if(istype(holder, /mob/living/carbon/monkey/tumor))
-			mutations |= new RACEMUT(MUT_OTHER)
-		else
-			mutations |= new RACEMUT(MUT_NORMAL)
-			mutation_index[RACEMUT] = GET_SEQUENCE(RACEMUT)
+		mutations |= new RACEMUT(MUT_NORMAL)
+		mutation_index[RACEMUT] = GET_SEQUENCE(RACEMUT)
 	else
 		mutation_index[RACEMUT] = create_sequence(RACEMUT, FALSE)
 	for(var/i in 2 to DNA_MUTATION_BLOCKS)

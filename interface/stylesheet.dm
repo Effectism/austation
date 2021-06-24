@@ -30,8 +30,8 @@ em						{font-style: normal;	font-weight: bold;}
 .adminobserverooc		{color: #0099cc;	font-weight: bold;}
 .adminooc				{color: #700038;	font-weight: bold;}
 
-.adminsay				{color:	#FF4500;	font-weight: bold;}
-.admin					{color: #386aff;	font-weight: bold;}
+.adminsay				{color: #ff4500;	font-weight: bold;}
+.admin					{color: #4473ff;	font-weight: bold;}
 
 .name					{					font-weight: bold;}
 
@@ -166,6 +166,7 @@ h1.alert, h2.alert		{color: #000000;}
 .robot					{font-family: "Courier New", cursive, sans-serif;}
 
 .command_headset		{font-weight: bold; font-size: 3;}
+.megaphone				{font-weight: bold; font-size: 3;}
 .small					{font-size: 1;}
 .big					{font-size: 3;}
 .reallybig				{font-size: 4;}

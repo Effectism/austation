@@ -14,7 +14,7 @@
 
 	w_class = WEIGHT_CLASS_TINY
 	flags_1 = CONDUCT_1
-	slot_flags = SLOT_BELT
+	slot_flags = ITEM_SLOT_BELT
 
 	var/static/list/allowed_states = list("arrival", "arrivalcorner", "bar", "barber", "black", "blackcorner", "blue", "bluecorner",
 		"bluefull", "bluered", "blueyellow", "blueyellowfull", "bot", "brown", "browncorner", "brownfull", "browncornerold", "brownold",
@@ -82,7 +82,7 @@
 		return
 
 	if(href_list["choose_state"])
-		var/state = input("Please select a style", "[src]") as null|anything in allowed_states
+		var/state = tgui_input_list(usr, "Please select a style", "[src]", allowed_states)
 		if(state)
 			floor_state = state
 			floor_dir = SOUTH // Reset dir, because some icon_states might not have that dir.

@@ -739,7 +739,10 @@
 /mob/proc/Animalize()
 
 	var/list/mobtypes = typesof(/mob/living/simple_animal)
-	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in sortList(mobtypes, /proc/cmp_typepaths_asc)
+	//austation begin -- tgui lists
+	//var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in sortList(mobtypes, /proc/cmp_typepaths_asc)
+	var/mobpath = tgui_input_list(usr, "Which type of mob should [src] turn into?", "Choose a type", sortList(mobtypes, /proc/cmp_typepaths_asc))
+	//austation end
 
 	if(!safe_animal(mobpath))
 		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
@@ -789,6 +792,14 @@
 		return 1 //Bears will auto-attack mobs, even if they're player controlled (Fixed! - Nodrak)
 	if(ispath(MP, /mob/living/simple_animal/parrot))
 		return 1 //Parrots are no longer unfinished! -Nodrak
+	if(ispath(MP, /mob/living/simple_animal/slaughter))
+		return 1
+	if(ispath(MP, /mob/living/simple_animal/revenant))
+		return 1
+	if(ispath(MP, /mob/living/simple_animal/cluwne))
+		return 1
+	if(ispath(MP, /mob/living/simple_animal/cluwne))
+		return 1
 
 	//Not in here? Must be untested!
 	return 0
